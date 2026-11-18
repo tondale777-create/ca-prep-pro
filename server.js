@@ -1,6 +1,6 @@
 // CA Prep Pro – zero-dependency Node.js server (Node 18+). Persistence: data/db.json
 const http = require('http'), fs = require('fs'), path = require('path'), crypto = require('crypto');
-const syl = require('./lib/syllabus'), { generate, setLabel } = require('./lib/generator'), { page } = require('./lib/render');
+const syl = require('./syllabus'), { generate, setLabel } = require('./lib/generator'), { page } = require('./lib/render');
 try { fs.readFileSync(path.join(__dirname, '.env'), 'utf8').split(/\r?\n/).forEach(l => { const m = l.match(/^\s*([A-Z_]+)\s*=\s*(.*?)\s*$/); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, ''); }); } catch {}
 const PORT = process.env.PORT || 3000, DB = path.join(process.env.DATA_DIR || path.join(__dirname, 'data'), 'db.json');
 fs.mkdirSync(path.dirname(DB), { recursive: true });
